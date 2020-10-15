@@ -146,7 +146,64 @@ if convertedNumber != nil {
  */
 
 //可选绑定
+// 用来判断可选类型是否包含值
+if let actualNumber = Int(possibleNumber) {
+    print("\'\(possibleNumber)\' has an integer value of \(actualNumber)")
+} else {
+    print("\'\(possibleNumber)\' could not be converted to an integer")
+}
+// 输出“'123' has an integer value of 123”
 
+if let firstNumber = Int("4"), let secondNumber = Int("42"), firstNumber < secondNumber && secondNumber < 100 {
+    print("\(firstNumber) < \(secondNumber) < 100")
+}
+// 输出“4 < 42 < 100”
 
+if let firstNumber = Int("4") {
+    if let secondNumber = Int("42") {
+        if firstNumber < secondNumber && secondNumber < 100 {
+            print("\(firstNumber) < \(secondNumber) < 100")
+        }
+    }
+}
+// 输出“4 < 42 < 100”
 
+// 隐式解析可选类型
+// 普通情况
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // 需要感叹号来获取值
+// 确定一个可选类型之后有值
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString  // 不需要感叹号
+let optionalString = assumedString // optionalString 没有显式的数据类型。那么根据类型推断，它就是一个普通的可选类型。他的类型是 "String?"
+// 如果一个变量之后可能变成 nil 的话请不要使用隐式解析可选类型。如果你需要在变量的生命周期中判断是否是 nil 的话，请使用普通可选类型。
 
+// 错误处理
+/*
+func makeASandwich() throws {
+    // ...
+}
+
+do {
+    try makeASandwich()
+    eatASandwich()
+} catch SandwichError.outOfCleanDishes {
+    washDishes()
+} catch SandwichError.missingIngredients(let ingredients) {
+    buyGroceries(ingredients)
+}
+*/
+
+// 断言和先决条件
+// 断言帮助你在开发阶段找到错误和不正确的假设，先决条件帮助你在生产环境中探测到存在的问题。
+/*
+ 断言和先决条件的不同点是，他们什么时候进行状态检测：
+ 断言仅在调试环境运行，而先决条件则在调试环境和生产环境中运行。
+ 在生产环境中，断言的条件将不会进行评估。这个意味着你可以使用很多断言在你的开发阶段，但是这些断言在生产环境中不会产生任何影响。
+ */
+let age = -3;
+//assert(age > 0, "A person's age cannot be less than zero")
+//assert(age > 0)
+
+let index = 1
+precondition(index > 0, "Index must be greater than zero.")
