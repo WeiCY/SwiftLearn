@@ -180,3 +180,86 @@ welcomeStr.remove(at: welcomeStr.index(before: welcomeStr.endIndex))
 let range = welcomeStr.index(welcomeStr.endIndex, offsetBy: -6)..<welcomeStr.endIndex
 welcomeStr.removeSubrange(range)
 
+// 子字符串
+let greeting1 = "hello, world!"
+let index1 = greeting1.firstIndex(of: ",") ?? greeting1.endIndex
+let begin = greeting1[..<index1]
+
+let newGree = String(begin)
+
+// 比较字符串
+// 字符串相等 前缀相等 后缀相等
+let quotation1 = "We're a lot alike, you and I."
+let sameQuotation = "We're a lot alike, you and I."
+if quotation1 == sameQuotation {
+    print("These two strings are considered equal")
+}
+// 打印输出“These two strings are considered equal”
+
+// "Voulez-vous un café?" 使用 LATIN SMALL LETTER E WITH ACUTE
+let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
+
+// "Voulez-vous un café?" 使用 LATIN SMALL LETTER E and COMBINING ACUTE ACCENT
+let combinedEAcuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
+
+if eAcuteQuestion == combinedEAcuteQuestion {
+    print("These two strings are considered equal")
+}
+// 打印输出“These two strings are considered equal”
+
+
+let romeoAndJuliet = [
+    "Act 1 Scene 1: Verona, A public place",
+    "Act 1 Scene 2: Capulet's mansion",
+    "Act 1 Scene 3: A room in Capulet's mansion",
+    "Act 1 Scene 4: A street outside Capulet's mansion",
+    "Act 1 Scene 5: The Great Hall in Capulet's mansion",
+    "Act 2 Scene 1: Outside Capulet's mansion",
+    "Act 2 Scene 2: Capulet's orchard",
+    "Act 2 Scene 3: Outside Friar Lawrence's cell",
+    "Act 2 Scene 4: A street in Verona",
+    "Act 2 Scene 5: Capulet's mansion",
+    "Act 2 Scene 6: Friar Lawrence's cell"
+]
+
+var act1SceneCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasPrefix("Act 1 ") {
+        act1SceneCount += 1
+    }
+}
+print("There are \(act1SceneCount) scenes in Act 1")
+// 打印输出“There are 5 scenes in Act 1”
+
+var mansionCount = 0
+var cellCount = 0
+for scene in romeoAndJuliet {
+    if scene.hasSuffix("Capulet's mansion") {
+        mansionCount += 1
+    } else if scene.hasSuffix("Friar Lawrence's cell") {
+        cellCount += 1
+    }
+}
+print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
+// 打印输出“6 mansion scenes; 2 cell scenes”
+
+// 字符串的unicode表示
+let dogString = "Dog‼🐶"
+for codeUnit in dogString.utf8 {
+    print("\(codeUnit) ", terminator: "")
+}
+print("")
+// 68 111 103 226 128 188 240 159 144 182
+
+for codeUnit in dogString.utf16 {
+    print("\(codeUnit) ", terminator: "")
+}
+print("")
+// 68 111 103 8252 55357 56374
+
+for scalar in dogString.unicodeScalars {
+    print("\(scalar.value) ", terminator: "")
+}
+print("")
+// 68 111 103 8252 128054
+
