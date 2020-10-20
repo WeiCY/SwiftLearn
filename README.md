@@ -1,8 +1,6 @@
 # SwiftLearn
 
-[![HitCount](http://hits.dwyl.com/WeiCY/SwiftLearn.svg)](http://hits.dwyl.com/WeiCY/SwiftLearn)
-
-我的Swift 5.3学习之路。
+我的Swift 5.3学习之路。[![HitCount](http://hits.dwyl.com/WeiCY/SwiftLearn.svg)](http://hits.dwyl.com/WeiCY/SwiftLearn)
 
 参考官方Swift文档和中文翻译，把我学习Swift的路线和中间写的代码记录下来。
 
