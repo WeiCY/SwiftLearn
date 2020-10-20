@@ -177,3 +177,93 @@ farmAnimals.isStrictSuperset(of: houseAnimals)
 // 两者区别 两个集合是不是相等
 houseAnimals.isSubset(of: houseAnimals)
 houseAnimals.isStrictSubset(of: houseAnimals)
+
+// 字典
+// 无序的集合
+var nameOfInterger = [Int: String]()
+nameOfInterger[16] = "sixteen"
+nameOfInterger = [:]
+
+//var airpods: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+var airports = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+
+// 数量
+print("The dictionary of airports contains \(airports.count) items.")
+// 打印“The dictionary of airports contains 2 items.”（这个字典有两个数据项）
+
+// 非空
+if airports.isEmpty {
+    print("The airports dictionary is empty.")
+} else {
+    print("The airports dictionary is not empty.")
+}
+// 打印“The airports dictionary is not empty.”
+
+// 添加 修改
+airports["LHR"] = "London"
+// airports 字典现在有三个数据项
+print(airports)
+
+airports["LHR"] = "London Heathrow"
+// “LHR”对应的值被改为“London Heathrow”
+print(airports)
+
+// 使用和下标方法相同，在存在key时可以修改 在不存在的时候会添加。 但是不同的地方下面的方法会在更新成功后返回原来的老值
+if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
+    print("The old value for DUB was \(oldValue).")
+}
+// 输出“The old value for DUB was Dublin.”
+print(airports)
+
+if let oldvale = airports.updateValue("BeiJing Airport", forKey: "BJ"){
+    print("The old value for DUB was \(oldvale).")
+}
+print(airports)
+
+// 取值
+if let airportName = airports["DUB"] {
+    print("The name of the airport is \(airportName).")
+} else {
+    print("That airport is not in the airports dictionary.")
+}
+// 打印“The name of the airport is Dublin Airport.”
+
+// 删除
+airports["APL"] = "Apple Internation"
+// “Apple Internation”不是真的 APL 机场，删除它
+
+airports["APL"] = nil
+// APL 现在被移除了
+
+// 会返回被移除的值或者在没有对应值的情况下返回nil
+if let removedValue = airports.removeValue(forKey: "DUB") {
+    print("The removed airport's name is \(removedValue).")
+} else {
+    print("The airports dictionary does not contain a value for DUB.")
+}
+// 打印“The removed airport's name is Dublin Airport.”
+
+// 遍历
+for (airportCode, airportName) in airports {
+    print("\(airportCode),\(airportName)")
+}
+
+// 注意后面的key和value
+for airportCode in airports.keys {
+    print("Airport code: \(airportCode)")
+}
+// Airport code: YYZ
+// Airport code: LHR
+
+for airportName in airports.values {
+    print("Airport name: \(airportName)")
+}
+// Airport name: Toronto Pearson
+// Airport name: London Heathrow
+
+// 获取key和value的数组
+let airportCodes = [String](airports.keys)
+// airportCodes 是 ["YYZ", "LHR"]
+
+let airportNames = [String](airports.values)
+// airportNames 是 ["Toronto Pearson", "London Heathrow"]
