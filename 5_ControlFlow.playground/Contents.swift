@@ -252,6 +252,8 @@ for character in puzzleInput {
     case "a", "e", "i", "o", "u", " ":
         // 对元音不进行任何操作 等同于 puzzleOutput.append("")
         continue
+    case "f":
+        print("ddddd")
     default:
         puzzleOutput.append(character)
     }
@@ -305,4 +307,49 @@ print(description)
 
 
 // 带标签的语句
+//gameLoop :while square != finalSquare {
+//    diceRoll = (Int)(arc4random()%6+1)
+//    switch square + diceRoll {
+//    case finalSquare:
+//        // 骰子数刚好使玩家移动到最终的方格里，游戏结束。
+//        break gameLoop
+//    case let newSquare where newSquare > finalSquare:
+//        continue gameLoop
+//    default:
+//        // 合法移动，做正常的处理
+//        square += diceRoll
+//        square += board[square]
+//    }
+//}
+
+// 提前退出
+func greet(person: [String: String]) {
+    guard let name = person["name"] else {
+        return
+    }
+    
+    print("Hello \(name)!")
+    
+    guard let location = person["location"] else {
+        print("I hope the weather is nice near you.")
+        return
+    }
+    
+    print("I hope the weather is nice in \(location).")
+    
+}
+
+greet(person: ["name": "John"])
+// 输出“Hello John!”
+// 输出“I hope the weather is nice near you.”
+greet(person: ["name": "Jane", "location": "Cupertino"])
+// 输出“Hello Jane!”
+// 输出“I hope the weather is nice in Cupertino.”
+
+// 检测API可用性
+if #available(iOS 10, *) {
+    
+} else {
+    
+}
 
